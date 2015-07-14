@@ -15,3 +15,10 @@ chp2Module.controller('StartUpController',function($scope){
 
 
 
+<<<<<<< HEAD
+=======
+myAppModule.controller('Ch2Controller',function($scope)
+{
+	$scope.welcome={text:'Hello!'};
+});
+>>>>>>> origin/master
