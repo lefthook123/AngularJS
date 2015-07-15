@@ -78,4 +78,30 @@ chp2Module.controller('HeaderController',function($scope){
 					  
 });
 
+chp2Module.controller('CartController',function($scope){
+	$scope.items=[{title:'Paint pots',quantity:8,price:3.95},
+				  {title:'Polka dots',quantity:17,price:12.95},
+				  {title:'Pebbles', quantity: 5, price: 6.95}];
 
+	$scope.bill={};
+	$scope.totalCart = function(){
+		//debugger;
+		var total=0;
+		for(var i =0, len=$scope.items.length;i<len;i++){
+			total = total + $scope.items[i].price*$scope.items[i].quantity;
+		}
+		return total;
+	}
+
+	$scope.subtotal = function(){
+		return $scope.totalCart()-$scope.bill.discount;
+	}
+
+	function calculateDiscount(newValue,oldValue,scope)
+	{
+		$scope.bill.discount = newValue > 100? 10:0;
+	}
+
+	$scope.$watch($scope.totalCart,calculateDiscount);
+
+});
